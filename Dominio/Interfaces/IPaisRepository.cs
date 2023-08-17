@@ -1,12 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Dominio.Interfaces
+namespace Dominio.Interfaces;
+public interface IPaisRepository : IGenericRepository<Pais>
 {
-    public interface IPaisRepository : IGenericRepository<Pais>
-    {
-        
-    }
+    
 }

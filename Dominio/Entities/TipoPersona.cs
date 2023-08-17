@@ -1,5 +1,5 @@
 namespace Dominio;
-public class TipoPersona
+public class TipoPersona : BaseEntity
 {
     public int IdTipoPersona { get; set; }
     public string ? DescripcionTipoPersona { get; set; }

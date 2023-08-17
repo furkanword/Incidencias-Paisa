@@ -1,6 +1,8 @@
+using Dominio.Interfaces;
+
 namespace Dominio;
 
-public class Ciudad
+public class Ciudad : BaseEntity
 
 {
     
