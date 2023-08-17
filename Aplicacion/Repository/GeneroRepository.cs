@@ -1,8 +1,11 @@
+using Dominio;
+using Persistencia;
+
 namespace Aplicacion.Repository;
 
-public class GeneroRepository : GenericRepository
+public class GeneroRepository : GenericRepository<Genero>
 {
-    public GeneroRepository(ApplicationDbContext context) : base(context)
+    public GeneroRepository(ApiIncidenciasContext context) : base(context)
     {
     }
 }

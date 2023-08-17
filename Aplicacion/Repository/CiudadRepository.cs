@@ -1,12 +1,11 @@
+
+using Aplicacion.Repository;
 using Dominio;
-using Dominio,Interfaces;
 using Persistencia;
 
-namespace Aplicacion.Repository;
-
-public class CiudadRepository : GenericRepository<Ciudad>, ICiudadRepository
+public class CiudadRepository : GenericRepository<Ciudad>
 {
-    public PaisRepository(ApiIncidenciasContext context) : base(context){
+    public CiudadRepository(ApiIncidenciasContext context) : base(context){
 
     }
 

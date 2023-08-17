@@ -1,4 +1,4 @@
-namespace ApiIncidencias.Controllers;
+namespace ApiIncidencias.Extensions;
 
 public static class ApplicationServiceExtension
 {

@@ -1,7 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
+using System.Linq.Expressions;
+using Dominio;
+using Dominio.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using Persistencia;
 
 namespace Aplicacion.Repository
 {
@@ -36,7 +38,7 @@ namespace Aplicacion.Repository
 
         public virtual async Task<T> getByIdAsync(int id)
         {
-            return await _context.Set<T>().FindAsync(id);
+            return (await _context.Set<T>().FindAsync(id))!;
         }
 
         public Task<T> GetByIdAsync(string id)

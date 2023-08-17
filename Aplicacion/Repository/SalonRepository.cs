@@ -1,8 +1,11 @@
+using Dominio;
+using Persistencia;
+
 namespace Aplicacion.Repository;
 
-public class SalonRepository : GenericRepository
+public class SalonRepository : GenericRepository<Salon>
 {
-    public SalonRepository(AplicacionContext context) : base(context)
+    public SalonRepository(ApiIncidenciasContext context) : base(context)
     {
     }
 }

@@ -1,4 +1,5 @@
 using ApiIncidencias.Controllers;
+using ApiIncidencias.Extensions;
 using iText.Kernel.XMP.Options;
 using Microsoft.EntityFrameworkCore;
 using Persistencia;
