@@ -2,7 +2,7 @@ using Dominio.Interfaces;
 
 namespace Dominio;
 
-public class Ciudad : BaseEntity
+public class Ciudad 
 
 {
     

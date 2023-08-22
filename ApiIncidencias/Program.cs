@@ -1,6 +1,4 @@
-using ApiIncidencias.Controllers;
 using ApiIncidencias.Extensions;
-using iText.Kernel.XMP.Options;
 using Microsoft.EntityFrameworkCore;
 using Persistencia;
 
@@ -13,14 +11,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.ConfigureCors();
-
+builder.Services.AddAplicacionServieces();
 builder.Services.AddDbContext<ApiIncidenciasContext>(Options =>
 {
     string ? connectionString  = builder.Configuration.GetConnectionString("ConexMysql");
     Options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
 
-
+//Contenedor de 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

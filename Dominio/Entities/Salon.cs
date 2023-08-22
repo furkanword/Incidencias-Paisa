@@ -1,6 +1,6 @@
 namespace Dominio;
 
-public class Salon : BaseEntity
+public class Salon
 {
     public int IdSalon { get; set; }
     public string ? NombreSalon { get; set; }

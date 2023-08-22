@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "UbxhOFwqaNYZdN7g+dl0abJYvwt/0pWLO3RlsTx68OIB9kbVrWHWhHeilCij8QeeMqv9ponuKdKgItujNenMOg==",
+  "dgSpecHash": "mH6u59sFxh6I65J7JQXc3fjoMM0gObdTuoXdO0LtlWsDgK2xd/DAVtw0FoEQGNAJWR+YUfJj9AEfeP3mfxAqJQ==",
   "success": true,
-  "projectFilePath": "/home/apolM01-044/Documents/Incidencias-Paisa/ApiIncidencias/ApiIncidencias.csproj",
+  "projectFilePath": "/home/apolM01-044/Incidencias-Paisa-2/ApiIncidencias/ApiIncidencias.csproj",
   "expectedPackageFiles": [
+    "/home/apolM01-044/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
+    "/home/apolM01-044/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/home/apolM01-044/.nuget/packages/fluentvalidation/11.5.1/fluentvalidation.11.5.1.nupkg.sha512",
     "/home/apolM01-044/.nuget/packages/fluentvalidation.aspnetcore/11.3.0/fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
     "/home/apolM01-044/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.5.1/fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
@@ -14,7 +16,7 @@
     "/home/apolM01-044/.nuget/packages/itext7.pdfhtml/5.0.1/itext7.pdfhtml.5.0.1.nupkg.sha512",
     "/home/apolM01-044/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/7.0.10/microsoft.aspnetcore.authentication.jwtbearer.7.0.10.nupkg.sha512",
     "/home/apolM01-044/.nuget/packages/microsoft.aspnetcore.openapi/7.0.10/microsoft.aspnetcore.openapi.7.0.10.nupkg.sha512",
-    "/home/apolM01-044/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
+    "/home/apolM01-044/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/home/apolM01-044/.nuget/packages/microsoft.dotnet.platformabstractions/1.1.0/microsoft.dotnet.platformabstractions.1.1.0.nupkg.sha512",
     "/home/apolM01-044/.nuget/packages/microsoft.entityframeworkcore/7.0.10/microsoft.entityframeworkcore.7.0.10.nupkg.sha512",
     "/home/apolM01-044/.nuget/packages/microsoft.entityframeworkcore.abstractions/7.0.10/microsoft.entityframeworkcore.abstractions.7.0.10.nupkg.sha512",

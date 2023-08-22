@@ -1,7 +1,7 @@
 
 namespace Dominio;
 
-public class TrainerSalon : BaseEntity
+public class TrainerSalon 
 {
     public string ? IdPerTrainerFk { get; set; }
     public Persona ? Persona { get; set; }

@@ -5050,11 +5050,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/apolM01-044/Documents/Incidencias-Paisa/Dominio/Dominio.csproj",
+      "projectUniqueName": "/home/apolM01-044/Incidencias-Paisa-2/Dominio/Dominio.csproj",
       "projectName": "Dominio",
-      "projectPath": "/home/apolM01-044/Documents/Incidencias-Paisa/Dominio/Dominio.csproj",
+      "projectPath": "/home/apolM01-044/Incidencias-Paisa-2/Dominio/Dominio.csproj",
       "packagesPath": "/home/apolM01-044/.nuget/packages/",
-      "outputPath": "/home/apolM01-044/Documents/Incidencias-Paisa/Dominio/obj/",
+      "outputPath": "/home/apolM01-044/Incidencias-Paisa-2/Dominio/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/apolM01-044/.nuget/NuGet/NuGet.Config"

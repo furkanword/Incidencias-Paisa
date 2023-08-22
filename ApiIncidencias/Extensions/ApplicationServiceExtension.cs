@@ -1,3 +1,6 @@
+using Aplicacion.UnitOfWork;
+using Dominio.Interfaces;
+
 namespace ApiIncidencias.Extensions;
 
 public static class ApplicationServiceExtension
@@ -9,4 +12,11 @@ public static class ApplicationServiceExtension
         .AllowAnyMethod()
         .AllowAnyHeader());
     });
+    public static void AddAplicacionServieces(this IServiceCollection services) {
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
+    } 
+   
+
+
+    
 }

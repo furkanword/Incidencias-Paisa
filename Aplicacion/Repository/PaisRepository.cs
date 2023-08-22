@@ -4,7 +4,7 @@ using Persistencia;
 
 namespace Aplicacion.Repository;
 
-public class PaisRepository : GenericRepository<Pais>
+public class PaisRepository : GenericRepository<Pais> , IPaisRepository
 {
     public PaisRepository(ApiIncidenciasContext context) : base(context){
 
