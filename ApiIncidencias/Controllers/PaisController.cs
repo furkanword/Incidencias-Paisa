@@ -1,57 +1,95 @@
+using System.Reflection.Metadata.Ecma335;
+using ApiIncidencias.Dtos;
+using ApiIncidencias.Helpers;
+using AutoMapper;
 using Dominio;
 using Dominio.Interfaces;
+using iText.Barcodes.Dmcode;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiIncidencias.Controllers;
+[ApiVersion("1.0")]
+[ApiVersion("1.1")]
 public class PaisController : BaseApiController{
+
     private readonly IUnitOfWork _unitOfWork;
-    [HttpGet]
+    private readonly IMapper _mapper;
+
+    public PaisController(IUnitOfWork unitOfWork, IMapper mapper){
+        
+        this._unitOfWork = unitOfWork;
+        
+        _mapper = mapper;
+    }
+
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+    /*[HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async  Task<ActionResult<IEnumerable<Pais>>> Get()
     {
         var paises = await _unitOfWork.Paises.GetAllAsync();
         return Ok (paises);
+    }*/
+    [HttpGet]
+    [MapToApiVersion("1.0")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async  Task<ActionResult<IEnumerable<PaisDto>>> Get()
+    {
+        var Paises = await _unitOfWork.Paises.GetAllAsync();
+        return _mapper.Map<List<PaisDto>>(Paises);
     }
+    [HttpGet]
+    [MapToApiVersion("1.1")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+   
 
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
-    public PaisController(IUnitOfWork unitOfWork)=> _unitOfWork = unitOfWork;
     [HttpGet("{id}")]
+    [MapToApiVersion("1.0")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async  Task<IActionResult> Get(string id)
     {
-        var region = await _unitOfWork.Paises.GetByIdAsync(id);
-        return Ok(region);
+        var pais = await _unitOfWork.Paises.GetByIdAsync(id);
+        return Ok(_mapper.Map<PaisxDepDto>(pais));
     }
-    
-   
 
 
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
     [HttpPut("{id}")]
+
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<Pais>> Put(string id, [FromBody]Pais pais){
-        if (pais == null)
+    public async Task<ActionResult<PaisDto>> Put(string id, [FromBody]PaisDto paisDto){
+        if (paisDto == null)
             return NotFound();
-        _unitOfWork.Paises.Update(pais);
+        var paises = _mapper.Map<Pais>(paisDto);
+        _unitOfWork.Paises.Update(paises);
         await _unitOfWork.SaveAsync();
-        return pais;
+        return paisDto;
     }
+
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<Pais>> Post(Pais pais){
+    public async Task<ActionResult<Pais>> Post(PaisDto paisDto){
+        var pais = _mapper.Map<Pais>(paisDto);
         this._unitOfWork.Paises.Add(pais);
         await _unitOfWork.SaveAsync();
         if (pais == null)
         {
             return BadRequest();
         }
-        return CreatedAtAction(nameof(Post),new {id= pais.IdPais}, pais);
+        paisDto.Id = pais.IdPais;
+        return CreatedAtAction(nameof(Post),new {id= paisDto.Id}, paisDto);
     }
 
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

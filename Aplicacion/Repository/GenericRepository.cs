@@ -36,14 +36,24 @@ namespace Aplicacion.Repository
             return await _context.Set<T>().ToListAsync();
         }
 
-        public virtual async Task<T> getByIdAsync(int id)
+        public virtual async Task<(int TotalRegistros, IEnumerable<T> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
+        {
+            var totalRegistros = await _context.Set<T>().CountAsync();
+            var registros = await _context.Set<T>()
+            .Skip((pageIndex -1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+            return (totalRegistros,registros);
+        }
+
+        public virtual async Task<T> GetByIdAsync(int id)
         {
             return (await _context.Set<T>().FindAsync(id))!;
         }
 
-        public Task<T> GetByIdAsync(string id)
+        public virtual async Task<T> GetByIdAsync(string id)
         {
-            throw new NotImplementedException();
+            return (await _context.Set<T>().FindAsync(id))!;
         }
 
         public virtual void Remove(T entity)
@@ -60,6 +70,5 @@ namespace Aplicacion.Repository
         {
             _context.Set<T>().Update(entity);
         }
-      
     }
-}
+} 

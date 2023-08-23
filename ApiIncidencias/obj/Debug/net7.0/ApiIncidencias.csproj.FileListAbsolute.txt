@@ -144,3 +144,7 @@
 /home/apolM01-044/Incidencias-Paisa-2/ApiIncidencias/obj/Debug/net7.0/ApiIncidencias.pdb
 /home/apolM01-044/Incidencias-Paisa-2/ApiIncidencias/obj/Debug/net7.0/ApiIncidencias.genruntimeconfig.cache
 /home/apolM01-044/Incidencias-Paisa-2/ApiIncidencias/obj/Debug/net7.0/ref/ApiIncidencias.dll
+/home/apolM01-044/Incidencias-Paisa-2/ApiIncidencias/bin/Debug/net7.0/AutoMapper.dll
+/home/apolM01-044/Incidencias-Paisa-2/ApiIncidencias/bin/Debug/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/home/apolM01-044/Incidencias-Paisa-2/ApiIncidencias/bin/Debug/net7.0/AspNetCoreRateLimit.dll
+/home/apolM01-044/Incidencias-Paisa-2/ApiIncidencias/bin/Debug/net7.0/Microsoft.AspNetCore.Mvc.Versioning.dll
