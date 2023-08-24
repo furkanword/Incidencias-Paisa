@@ -1,3 +1,4 @@
+using System.Security.AccessControl;
 using Dominio;
 using Dominio.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -18,10 +19,24 @@ public class PaisRepository : GenericRepository<Pais> , IPaisRepository
         .ToListAsync();
     }
     public override async Task<Pais> GetByIdAsync(string id)
+    {
+        return (await _context.Set<Pais>().Include(x => x.Departamentos).FirstAsync(p=> p.IdPais == id))!;
+        
+    }
+    public override async Task<(int totalRegistros, IEnumerable<Pais> registros)> GetAllAsync(int pageIndex,int pageSize, string search){
+        var query = _context.Paises as IQueryable<Pais>;
+        if (!string.IsNullOrEmpty(search))
         {
-            return (await _context.Set<Pais>().Include(x => x.Departamentos).FirstAsync(p=> p.IdPais == id))!;
-            
+            query = query!.Where(x => x.NombrePais!.ToLower().Contains(search));
         }
+        var totalRegistros = await query!.CountAsync();
+        var registros = await query!
+        .Include(u => u.Departamentos)
+        .Skip((pageIndex - 1) * pageSize)
+        .Take(pageSize)
+        .ToArrayAsync();
+        return (totalRegistros, registros);
+    }
 
 
 }

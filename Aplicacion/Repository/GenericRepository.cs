@@ -36,7 +36,7 @@ namespace Aplicacion.Repository
             return await _context.Set<T>().ToListAsync();
         }
 
-        public virtual async Task<(int TotalRegistros, IEnumerable<T> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
+        public virtual async Task<(int totalRegistros, IEnumerable<T> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
         {
             var totalRegistros = await _context.Set<T>().CountAsync();
             var registros = await _context.Set<T>()

@@ -1,4 +1,5 @@
 using Dominio;
+using Dominio.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -34,8 +35,22 @@ public class  PersonaConfiguration : IEntityTypeConfiguration<Persona>
         builder.HasOne(p => p.TipoPersona)
        .WithMany(p => p.Personas)
        .HasForeignKey(p => p.IdTipoPerFk);
-
-    
+        
+        builder.HasMany(p => p.Roles)
+        .WithMany(p => p.Personas)
+        .UsingEntity<PersonaRol>(
+          j => j. HasOne(pt => pt.Rol)
+          .WithMany(t => t.PersonRoles)
+          .HasForeignKey(pt => pt.RolId),
+        
+          j => j.HasOne(pt => pt.Persona)
+          .WithMany(t => t.PersonaRoles)
+          .HasForeignKey(pt => pt.UsuarioId),
+          j =>{
+            j.HasKey(t => new {t.UsuarioId,t.RolId});
+          });
+        
+      
     }
 }
     

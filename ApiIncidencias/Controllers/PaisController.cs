@@ -1,4 +1,5 @@
 using System.Reflection.Metadata.Ecma335;
+using System.Text.RegularExpressions;
 using ApiIncidencias.Dtos;
 using ApiIncidencias.Helpers;
 using AutoMapper;
@@ -31,6 +32,7 @@ public class PaisController : BaseApiController{
         var paises = await _unitOfWork.Paises.GetAllAsync();
         return Ok (paises);
     }*/
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
     [HttpGet]
     [MapToApiVersion("1.0")]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -40,24 +42,18 @@ public class PaisController : BaseApiController{
         var Paises = await _unitOfWork.Paises.GetAllAsync();
         return _mapper.Map<List<PaisDto>>(Paises);
     }
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
     [HttpGet]
     [MapToApiVersion("1.1")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-   
+    public async Task<ActionResult<Pager<PaisxDepDto>>> Get11([FromQuery] Params paisParams){
+        var pais = await _unitOfWork.Paises.GetAllAsync(paisParams.pageIndex,paisParams.pageSize,paisParams.search!);
+        var lstPaisesDto = _mapper.Map<List<PaisxDepDto>>(pais.registros);
+        return new Pager<PaisxDepDto>(lstPaisesDto,pais.totalRegistros,paisParams.pageIndex,paisParams.pageSize,paisParams.search!);   
 
-    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
-    [HttpGet("{id}")]
-    [MapToApiVersion("1.0")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async  Task<IActionResult> Get(string id)
-    {
-        var pais = await _unitOfWork.Paises.GetByIdAsync(id);
-        return Ok(_mapper.Map<PaisxDepDto>(pais));
+
     }
-
-
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
     [HttpPut("{id}")]
 
